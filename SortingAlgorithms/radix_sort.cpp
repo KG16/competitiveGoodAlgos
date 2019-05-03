@@ -1,6 +1,7 @@
-#include <bits/stdc++.h>
+#include <bits/stdc++.h>// prefer to import only required libraries for production level code. You will be questioned else.
 using namespace std;
 
+// there is a lot of scope for modularization here. This function is too ong. try to keep it 5/max 10 lines long.
 void countSort(int arr[], int n, int pow10){
     vector <int> end_dig_index[10];
     for(int i = 0; i < n; ++i){
@@ -22,18 +23,20 @@ void countSort(int arr[], int n, int pow10){
     }
 }
 
-
+//careful of unecessary blan lines. they should searve a purpose of increasing readibility. Else remove. No double enters together.
 
 void radixSort(int arr[], int n, int max_element){
     for(int pow10 = 1; pow10 <= max_element && pow10 <= INT_MAX; pow10 *= 10){
         countSort(arr, n, pow10);
     }
-
 }
-int main(){
-    int n; cin >> n; // n - total no of elements
 
-    int arr[n]; // Assuming the nos to be 32 bit, if they are 64 bit choose long long
+int main(){
+    int n; 
+    cin >> n; // n - total no of elements
+    int arr[n]; // Assuming the input numbers to be 32-bit, if they are 64-bit choose long long
+    
+    //make another function for this.
     int max_element = INT_MIN;
 
     for(int i = 0; i < n; ++i){
@@ -42,7 +45,7 @@ int main(){
     }
 
     radixSort(arr, n, max_element);
-
+//make another module for printing:  printResult() move thees lines there
     for(int i = 0; i < n; ++i){
         cout << arr[i] << ' ';
     }
